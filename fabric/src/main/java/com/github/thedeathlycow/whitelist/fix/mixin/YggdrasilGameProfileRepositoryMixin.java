@@ -10,9 +10,7 @@ import java.net.URL;
 
 /**
  * Updates the URL of the findProfiles end point. This patch makes the `/whitelist add` command work like normal
- * for Fabric, Quilt, Forge, and NeoForge.
- *
- * Note that Bukkit/Spigot/Paper users must use the `/whitelistfix add` instead, as Mixins are not supported on that platform.
+ * for Fabric and Quilt.
  */
 @Mixin(value = YggdrasilGameProfileRepository.class, remap = false)
 public class YggdrasilGameProfileRepositoryMixin {

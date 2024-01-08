@@ -1,5 +1,6 @@
 package com.github.thedeathlycow.whitelist.fix.mixin;
 
+import com.github.thedeathlycow.whitelist.fix.Constants;
 import com.github.thedeathlycow.whitelist.fix.UpdatedGameProfileRepository;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import net.minecraft.server.Services;
@@ -20,9 +21,9 @@ public class ServicesMixin {
     private static void createUpdatedRepository(YggdrasilAuthenticationService service, File file, CallbackInfoReturnable<Services> cir) {
         Services repository = cir.getReturnValue();
 
-        UpdatedGameProfileRepository.fixSearchUrl(
-                repository.profileRepository()
-        );
+        if (UpdatedGameProfileRepository.fixSearchUrl(repository.profileRepository())) {
+            Constants.LOG.info("Successfully patched the whitelist command!");
+        }
     }
 
 }
